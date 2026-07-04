@@ -1,6 +1,6 @@
 return {
     window = {
-        title = "LoveTower",
+        title = "LoveTowerTest",
         width = 1200,
         height = 800,
         vsync = 1,
