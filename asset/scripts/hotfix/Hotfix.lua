@@ -86,7 +86,7 @@ function love.update(dt)
         if status_code == 200 then
             love.filesystem.write("asset/scripts/hotfix/Config.lua", body)
         end
-        require "asset.scripts.app.Game"
+        -- require "asset.scripts.app.Game"
     end
 end
 
