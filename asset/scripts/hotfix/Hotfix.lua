@@ -1,5 +1,4 @@
 
-
 -- ===== Shader：动态背景 =====
 local bgShader = love.graphics.newShader(
     [[
@@ -83,6 +82,7 @@ function love.update(dt)
     time = time + dt
     progress = math.max(0, math.min(1, time))
     bgShader:send("time", time)
+    print("hotfix update", dt, time, progress)
 end
 
 function love.draw()
