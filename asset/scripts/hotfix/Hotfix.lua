@@ -116,7 +116,7 @@ function Hotfix:draw()
 
     -- ===== 文字（默认字体，不加载资源）=====
     love.graphics.setColor(1, 1, 1, 1)
-    local text = string.format("Downloading... %d%%", math.floor(progress * 100))
+    local text = string.format("new Downloading... %d%%", math.floor(progress * 100))
 
     local font = love.graphics.getFont() -- 默认字体
     local tw = font:getWidth(text)
