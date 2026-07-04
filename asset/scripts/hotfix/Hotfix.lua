@@ -1,11 +1,8 @@
-local Hotfix = {}
 
-
-
-local progress = 0
 
 -- ===== Shader：动态背景 =====
-local bgShader = love.graphics.newShader([[
+local bgShader = love.graphics.newShader(
+    [[
 extern float time;
 extern vec2 screenSize;
 
@@ -68,31 +65,31 @@ vec4 effect(vec4 color, Image tex, vec2 uv, vec2 screen_uv)
 
     return vec4(bg, 1.0);
 }
-]])
+]]
+)
 
+
+
+local progress = 0
 local time = 0
 
-
 -- 更新进度
-function Hotfix:setProgress(p)
-    progress = math.max(0, math.min(1, p))
+
+function love.load()
+   print("hotfix load")
 end
 
-function Hotfix:load()
-    print("hotfix load")
-end
-
-function Hotfix:update(dt)
-    -- print("hotfix update")
+function love.update(dt)
     time = time + dt
+    progress = math.max(0, math.min(1, time))
     bgShader:send("time", time)
 end
 
-function Hotfix:draw()
+function love.draw()
     local w, h = love.graphics.getWidth(), love.graphics.getHeight()
 
     -- ===== 背景 Shader =====
-    bgShader:send("screenSize", {w, h})
+    bgShader:send("screenSize", { w, h })
     love.graphics.setShader(bgShader)
     love.graphics.rectangle("fill", 0, 0, w, h)
     love.graphics.setShader()
@@ -116,7 +113,7 @@ function Hotfix:draw()
 
     -- ===== 文字（默认字体，不加载资源）=====
     love.graphics.setColor(1, 1, 1, 1)
-    local text = string.format("new Downloading... %d%%", math.floor(progress * 100))
+    local text = string.format("Downloading... %d%%", math.floor(progress * 100))
 
     local font = love.graphics.getFont() -- 默认字体
     local tw = font:getWidth(text)
@@ -124,4 +121,3 @@ function Hotfix:draw()
     love.graphics.print(text, (w - tw) / 2, y - 30)
 end
 
-return Hotfix
