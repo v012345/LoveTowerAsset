@@ -1,0 +1,4 @@
+---@class IEntity
+---@field update fun(self:IEntity, dt:number)
+---@field draw fun(self:IEntity)
+---@field destroy fun(self:IEntity)

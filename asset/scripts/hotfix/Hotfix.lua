@@ -1,0 +1,6 @@
+-- local hotfix = {}
+-- function love.update(dt)
+--     -- Game:update(dt)
+--     print("hotfix update")
+-- end
+-- return hotfix

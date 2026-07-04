@@ -1,0 +1,2 @@
+---@class IManager
+---@field load fun(self:IManager)
