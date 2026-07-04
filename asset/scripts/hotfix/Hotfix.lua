@@ -82,7 +82,9 @@ function love.update(dt)
     time = time + dt
     progress = math.max(0, math.min(1, time))
     bgShader:send("time", time)
-    print("hotfix update", dt, time, progress)
+    if progress >= 1 then
+        require"asset.scripts.app.Game"
+    end
 end
 
 function love.draw()
